@@ -145,7 +145,7 @@ int agusuario(struct usuarios usuarios[100],int cantusuarios)
 					}
 						
 				for(i=0;boton!=1&&i<cantusuarios;i++)
-					if(strcmp(usuarios[i].mat,usuarios[cantusuarios].mat)==0) // CHECAMOS QUE NO ESTÉ REPETIDA
+					if(strcmp(usuarios[i].mat,usuarios[cantusuarios].mat)==0) // CHECAMOS QUE NO ESTÃ‰ REPETIDA
 					{
 						boton=1;
 						printf("\n\n\t El identificador esta repetido, introduzca otro: ");
@@ -161,12 +161,20 @@ int agusuario(struct usuarios usuarios[100],int cantusuarios)
 			for(i=0;usuarios[cantusuarios].nombre[i]!='\0';i++)
 					usuarios[cantusuarios].nombre[i]=toupper(usuarios[cantusuarios].nombre[i]);
 			
+			for(i=0;i<strlen(usuarios[cantusuarios].nombre);i++)  // CHECAMOS QUE NO HAYA PUESTO TABULADOR AL INGRESAR EL NOMBRE
+					if(usuarios[cantusuarios].nombre[i]=='\t')
+						usuarios[cantusuarios].nombre[i]=' ';				
+					
 			printf("\n\n\t Introduzca la direccion: ");
 			fflush(stdin);
 			gets(usuarios[cantusuarios].direc);
-			
+		
 			for(i=0;usuarios[cantusuarios].direc[i]!='\0';i++)
 					usuarios[cantusuarios].direc[i]=toupper(usuarios[cantusuarios].direc[i]);
+			
+			for(i=0;i<strlen(usuarios[cantusuarios].direc);i++)  // CHECAMOS QUE NO HAYA PUESTO TABULADOR AL INGRESAR LA DIRECCION
+					if(usuarios[cantusuarios].direc[i]=='\t')
+						usuarios[cantusuarios].direc[i]=' ';	
 			
 			usuarios[cantusuarios].estado=0; // INICIALIZAMOS SU ESTADO EN 0, PORQUE AL SER UN USUARIO NUEVO, NO TIENE MULTAS
 			usuarios[cantusuarios].cantlibros=0; // INICIALIZAMOS SU ESTADO EN 0, PORQUE NO HA PEDIDO PRESTADO NADA
